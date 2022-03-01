@@ -454,6 +454,14 @@ static CGFloat YGRoundPixelValue(CGFloat value) {
   dispatch_once(&onceToken, ^() {
     scale = [UIScreen mainScreen].scale;
   });
+  
+  if (!scale) {
+     scale = 2;
+  }
+    
+  if (isnan(value)) {
+     value = 0;
+  }
 
   return roundf(value * scale) / scale;
 }
